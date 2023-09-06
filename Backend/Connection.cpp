@@ -41,11 +41,12 @@ Channel * Connection::channel(){
 }
 
 void Connection::HandleWrite(){
-    std::cout << "HandleWrite" << std::endl;
+    //std::cout << "HandleWrite" << std::endl;
     handle_write_(this);
 }
 
 void Connection::HandleRead(){
+    //std::cout << "HandleRead" << std::endl;
     handle_read_(this);
 };
 
@@ -60,7 +61,6 @@ void Connection::set_handle_write(const std::function<void (Connection *)>& cb){
 void Connection::send_head(int payload_length){
     char *response_head;
     int head_length = 0;
-    std::cout << payload_length << std::endl;
     if(payload_length < 126){
         response_head = (char *)malloc(2);
         response_head[0] = 0x81;    
@@ -89,7 +89,6 @@ void Connection::send_head(int payload_length){
 }
 
 void Connection::send_msg(char *msg) {
-    std::cout << msg << std::endl;
     int payload_length = strlen(msg);
     // 由于没有buffer，所以先将头送过去
     send_head(payload_length);
@@ -144,7 +143,6 @@ void Connection::shakehands(){
             int len = strlen(reinterpret_cast<const char *> (sha1_data));
             // 方法内部的调用
             base64_encode(reinterpret_cast<char *>(sha1_data), len, sec_accept);
-            std::cout << sec_accept << std::endl;
             response += "HTTP/1.1 101 Switching Protocols\r\n";
             response += "Upgrade: websocket\r\n";
             response += "Connection: Upgrade\r\n";

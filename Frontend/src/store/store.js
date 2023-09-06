@@ -84,16 +84,16 @@ const store = new Vuex.Store({
             store.commit('sendMsg', JSON.stringify(state.jsonObject))
         },
         joinRoom (state, roomId) {
-            state.jsonObject.function = 3
+            state.jsonObject.function = 2
             state.jsonObject.room.id = roomId
             store.commit('sendMsg', JSON.stringify(state.jsonObject))
         },
         beginGame (state) {
-            state.jsonObject.function = 4
+            state.jsonObject.function = 3
             store.commit('sendMsg', JSON.stringify(state.jsonObject))
         },
         heartbeat (state, allBodies) {
-            state.jsonObject.function = 5
+            state.jsonObject.function = 4
             state.jsonObject.bodies = allBodies
             store.commit('sendMsg', CircularJSON.stringify(state.jsonObject))
         },

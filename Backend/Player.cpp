@@ -3,7 +3,8 @@
 Player::Player() :
         room_id_(-1), 
         event_(PlayerEvent::DEFAULT),
-        //msg_(nullptr),
+        msg1_(nullptr),
+        msg2_(nullptr),
         playing_(0){};
 
 Player::~Player(){};
@@ -24,14 +25,22 @@ PlayerEvent Player::event() const{
     return event_;
 };
 
-/*
-void Player::setMsg(cJSON * const msg){
-    msg_ = msg;
+
+void Player::setMsg1(cJSON * const msg){
+    msg1_ = msg;
 };
-cJSON *Player::msg() const{
-    return msg_;
+cJSON *Player::msg1() const{
+    return msg1_;
 };
-*/
+
+void Player::setMsg2(cJSON * const msg){
+    msg2_ = msg;
+};
+
+cJSON *Player::msg2() const{
+    return msg2_;
+};
+
 
 void Player::setPlaying(int playing){
     playing_ = playing;

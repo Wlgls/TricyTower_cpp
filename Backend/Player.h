@@ -21,8 +21,10 @@ class Player{
         void setEvent(PlayerEvent event);
         PlayerEvent event() const;
 
-        //void setMsg(cJSON * const msg);
-        //cJSON * msg() const;
+        void setMsg1(cJSON * const msg);
+        cJSON * msg1() const;
+        void setMsg2(cJSON * const msg);
+        cJSON * msg2() const;
 
         void setPlaying(int playing);
         int playing() const;
@@ -30,7 +32,7 @@ class Player{
     private:
         int room_id_;
         PlayerEvent event_; // 当前的服务是一个线性的，也就是说当前用户的状态永远都是一个递进的
-        //cJSON * msg_; // 当前用户当前状态的信息。
-        
+        cJSON * msg1_; // 当开始游戏时，需要保存另外两个玩家的信息。
+        cJSON * msg2_; 
         int playing_;
 };

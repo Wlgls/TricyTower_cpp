@@ -29,11 +29,13 @@ void Channel::HandleEvent() const{
 
 void Channel::EnableRead(){
     listen_events_ |= EPOLLIN;
+    //listen_events_ = EPOLLIN;
     ep_->UpdateChannel(this);
 }
 
 void Channel::EnableWrite(){
     listen_events_ |= EPOLLOUT;
+    //listen_events_ = EPOLLOUT;
     ep_->UpdateChannel(this);
 }
 
